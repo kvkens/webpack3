@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -33,15 +34,18 @@ module.exports = {
       ]
     },{
       test : /\.css$/,
-      use : [
-        "style-loader",
-        "css-loader"
-      ]
+      use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+      })
     },{
       test : /\.(png|svg|jpg|gif)$/,
-      use : [
-        "file-loader"
-      ]
+      use : [{
+        loader: 'file-loader',
+        options: {
+          name: 'assets/images/[name].[hash:8].[ext]'
+        }
+      }]
     },{
       test: /\.(woff|woff2|eot|ttf|otf)$/,
       use : [
@@ -53,6 +57,7 @@ module.exports = {
     // new webpack.optimize.UglifyJsPlugin({
     //   compress : false
     // }),
+    new ExtractTextPlugin("styles.css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor"
     }),
