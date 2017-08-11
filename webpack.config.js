@@ -15,7 +15,7 @@ module.exports = {
     app: "./index.js"
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve : {
@@ -43,7 +43,7 @@ module.exports = {
       use : [{
         loader: 'file-loader',
         options: {
-          name: 'assets/images/[name].[hash:8].[ext]'
+          name: 'images/[name].[hash:8].[ext]'
         }
       }]
     },{
@@ -57,7 +57,7 @@ module.exports = {
     // new webpack.optimize.UglifyJsPlugin({
     //   compress : false
     // }),
-    new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin("[name].[hash].css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor"
     }),
