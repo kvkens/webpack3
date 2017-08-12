@@ -1,14 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  devtool: 'inline-source-map',
-  devServer : {
-    contentBase : "dist",
-    hot: true
-  },
   entry: {
     vendor: ["react", "react-dom"],
     app: "./index.js"
@@ -57,15 +53,19 @@ module.exports = {
     }]
   },
   plugins : [
+    new webpack.optimize.UglifyJsPlugin({
+      compress : false
+    }),
     new ExtractTextPlugin("[name].[hash].css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor"
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template : "./index.html",
       inject : "body",
-      hash : false
+      hash : true
     })
   ]
 };
