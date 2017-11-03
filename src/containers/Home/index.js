@@ -8,6 +8,9 @@ class Home extends Component{
 
     }
   }
+  componentDidMount(){
+    console.log("componentDidMount");
+  }
   render(){
     return <div className="bg"><img src={tupian} /></div>
   }

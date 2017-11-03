@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -10,18 +10,19 @@ module.exports = {
     app: "./index.js"
   },
   output: {
-    filename: '[name].[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist")
   },
   externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
+    //"react": "React",
+    //"react-dom": "ReactDOM"
   },
   resolve : {
     alias: {
-      pages: path.resolve(__dirname, 'src/pages/'),
-      components: path.resolve(__dirname, 'src/components/'),
-      assets: path.resolve(__dirname, 'src/assets/')
+      containers: path.resolve(__dirname, "src/containers/"),
+      components: path.resolve(__dirname, "src/components/"),
+      assets: path.resolve(__dirname, "src/assets/"),
+      routes: path.resolve(__dirname, "src/routes/")
     }
   },
   module: {
@@ -40,9 +41,9 @@ module.exports = {
     },{
       test : /\.(png|svg|jpg|gif)$/,
       use : [{
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: 'images/[name].[hash:8].[ext]'
+          name: "images/[name].[ext]"
         }
       }]
     },{
@@ -56,15 +57,15 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress : false
     }),
-    new ExtractTextPlugin("[name].[hash].css"),
+    new ExtractTextPlugin("[name].css"),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor"
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
       template : "./index.html",
       inject : "body",
+      favicon : "./src/assets/favicon.ico",
       hash : true
     })
   ]

@@ -1,6 +1,7 @@
 import React,{ Component } from "react";
 import ReactDOM from "react-dom";
-import Home from "pages/Home";
+import Home from "containers/Home";
+import "./index.css";
 
 
 
