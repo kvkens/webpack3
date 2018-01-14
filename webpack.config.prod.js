@@ -7,7 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     vendor: [
-      "react", "react-dom", "react-router-dom"
+      "react", "react-dom", "react-router-dom","mirrorx","react-redux","react-router-redux","redux"
     ],
     app: "./src/index"
   },
@@ -62,7 +62,7 @@ module.exports = {
           }
         ]
       }, {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|svg|ttf|otf)$/,
         use: [
           {
             loader: "file-loader",

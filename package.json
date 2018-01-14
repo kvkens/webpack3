@@ -34,6 +34,8 @@
     "webpack-dev-server": "^2.10.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "mirrorx": "^0.2.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

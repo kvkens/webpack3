@@ -1,8 +1,10 @@
-import React,{ Component } from "react";
-import ReactDOM from "react-dom";
-import Home from "containers/Home";
-import "./index.css";
+import React from "react";
+import { render } from "mirrorx";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap-theme.css";
+import App from "containers/App";
 
 
 
-ReactDOM.render(<Home />, document.getElementById('app'));
+
+render(<App />, document.getElementById("app"));
