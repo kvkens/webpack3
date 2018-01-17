@@ -1,44 +1,25 @@
-import React, { Component } from 'react';
-import mirror, { actions } from "mirrorx";
-mirror.hook((action, getState) => {
-  console.log(action);
-  console.log(getState())
-})
-class Header extends Component {
-  handlerHome = () => {
-    actions.routing.push("/");
-  }
-  handlerAbout = () => {
-    actions.routing.push("/about");
-  }
-  handlerCounter = () => {
-    actions.routing.push("/counter");
-  }
-  handlerAdd = () => {
-    actions.app.increment();
-  }
-  
-  render() {
-    return (
-      <div className="container-fluid">
-        <ul className="nav nav-pills">
-          <li role="presentation">
-            <button onClick={this.handlerHome} className="btn btn-success">Home</button>
-          </li>
-          <li role="presentation">
-            <button onClick={this.handlerAbout} className="btn btn-success">About</button>
-          </li>
-          <li role="presentation">
-            <button onClick={this.handlerCounter} className="btn btn-success">Counter</button>
-          </li>
-          <li role="presentation">
-            <button onClick={this.handlerAdd} className="btn btn-danger">Add</button>
-          </li>
-          
-        </ul>
-      </div>
-    );
-  }
-}
+import React from "react";
+import { NavLink } from "mirrorx";
+import { Menu, Icon } from "antd";
+
+
+const Header = ({location}) => (
+    <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={[location.pathname]}
+        style={{ lineHeight: '64px' }}
+    >
+        <Menu.Item key="/">
+            <NavLink to="/"><Icon type="home" />首页</NavLink>
+        </Menu.Item>
+        <Menu.Item key="/xn">
+            <NavLink to="/xn"><Icon type="laptop" />性能</NavLink>
+        </Menu.Item>
+        <Menu.Item key="/fw">
+            <NavLink to="/fw"><Icon type="customer-service" />服务</NavLink>
+        </Menu.Item>
+    </Menu>
+);
 
 export default Header;

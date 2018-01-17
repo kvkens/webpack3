@@ -1,20 +1,17 @@
-import React from "react"
-import {Route} from "mirrorx"
-
-import Header from "components/Header"
-import Home from "components/Home"
-import About from "components/About"
-import Counter from "components/Counter"
+import React from "react";
+import { Route,Router } from "mirrorx";
+import Header from "components/Header";
+import Home from "components/Home";
+import User from "containers/User";
 
 const App = () => (
-  <div>
-    <Header/>
+  <Router>
     <div>
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/counter" component={Counter}/>
+      <Route path="*" component={Header} />
+      <Route exact path="/" component={Home} />
+      <Route path="/xn" component={User} />
     </div>
-  </div>
+  </Router>
 )
 
-export default App
+export default App;
