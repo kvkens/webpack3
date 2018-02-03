@@ -9,7 +9,6 @@
 ## 特性
 
 - react
-- redux
-- react-router
 - webpack
 - babel
+- mirrorx

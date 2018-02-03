@@ -1,15 +1,26 @@
-import React from "react";
-import { Route,Router } from "mirrorx";
-import Header from "components/Header";
-import Home from "components/Home";
-import User from "containers/User";
+import React from 'react';
+import { Route, Router, NavLink } from 'mirrorx';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import Head from 'components/Head';
+import User from 'containers/User';
+import Routes from './routes';
+const { Header, Content, Footer } = Layout;
+
 
 const App = () => (
   <Router>
     <div>
-      <Route path="*" component={Header} />
-      <Route exact path="/" component={Home} />
-      <Route path="/xn" component={User} />
+      <Layout className="layout">
+        <Route path='*' component={Head} />
+        <Content style={{ padding: '0 50px' }}>
+          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+            <Routes />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+        Ant Design ©2018 Created by Kvkens
+          </Footer>
+      </Layout>
     </div>
   </Router>
 )
