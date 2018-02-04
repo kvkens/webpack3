@@ -73,7 +73,7 @@ module.exports = {
   },
   plugins: [
     new UglifyJsPlugin({
-      compress: false,
+      // compress: false,
       sourceMap: true
     }),
     new ExtractTextPlugin('[name].css'),
